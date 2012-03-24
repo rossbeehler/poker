@@ -42,7 +42,19 @@ describe PokerHand do
 
   context "detect type" do
     it "finds a high card" do
-      hand_of(%W(2S)).type.should == :high_card
+      hand_of(%W(2S 3S)).type.should == :high_card
+    end
+
+    it "finds a pair among two cards" do
+      hand_of(%W(2S 2C)).type.should == :one_pair
+    end
+
+    it "finds a pair at the back of three cards" do
+      hand_of(%W(3S 2S 2C)).type.should == :one_pair
+    end
+
+    it "finds a pair spread out in the hand" do
+      hand_of(%W(2S 3S 2C)).type.should == :one_pair
     end
   end
 

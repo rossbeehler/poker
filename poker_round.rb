@@ -12,7 +12,11 @@ class PokerRound
   end
 
   def winner
-    @hands.sort[-1].player
+    high_hand.player
+  end
+
+  def high_hand
+    @hands.sort[-1]
   end
 
 end

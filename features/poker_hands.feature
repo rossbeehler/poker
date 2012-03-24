@@ -13,4 +13,5 @@ Feature: Poker Hands
     And the winner is <winner>
   Examples:
     | player_1_cards | player_2_cards | player_1_hand_type | player_2_hand_type | winner  |
-    | 2S,3S,4S,5S,AD | 2C,3C,4C,5C,KD | High Card (A)      | High Card (K)      | player1 |
+    | 2S,3S,4S,5S,AC | 2H,3H,4H,5H,KD | High Card (A)      | High Card (K)      | player1 |
+    | 2S,3S,4S,5S,AC | 2H,3H,4H,5H,5D | High Card (A)      | One Pair (5)       | player2 |

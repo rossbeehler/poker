@@ -1,5 +1,8 @@
+require_relative 'poker_hand_type'
+
 class PokerHand
   attr_reader :player
+  attr_reader :cards
 
   def initialize(player, cards)
     @player = player
@@ -10,19 +13,23 @@ class PokerHand
     @cards.sort
   end
 
-  def high_card
-    sort[-1]
-  end
-
   def type
-    :high_card
+    PokerHandType.new(self)
   end
 
   def type_rank
     high_card.rank
   end
 
-  def <=>(other)
-    high_card <=> other.high_card
+  def high_card
+    sort[-1]
+  end
+
+  def <=>(other_hand)
+    if self.type == other_hand.type
+      return high_card <=> other_hand.high_card
+    end
+
+    self.type.rank <=> other_hand.type.rank
   end
 end

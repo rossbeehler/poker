@@ -44,4 +44,12 @@ describe PokerRound do
       subject.winner.should == :player2
     end
   end
+
+  context "knows the rank of hand types" do
+    it "picks one pair over high card" do
+      add_hand(:player1, %W(AS))
+      add_hand(:player2, %W(2S 2C))
+      subject.winner.should == :player2
+    end
+  end
 end
