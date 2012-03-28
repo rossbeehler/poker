@@ -30,6 +30,6 @@ class PokerHand
       return high_card <=> other_hand.high_card
     end
 
-    self.type.rank <=> other_hand.type.rank
+    self.type <=> other_hand.type
   end
 end

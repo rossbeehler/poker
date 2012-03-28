@@ -1,8 +1,6 @@
 require_relative 'poker_hand_type_rank'
 
 class PokerHandType
-  attr_reader :type
-
   def initialize(hand)
     @type = :high_card
     (hand.cards.size-1).times { |i| @type = :one_pair if hand.sort[i].rank == hand.sort[i+1].rank }
@@ -12,7 +10,15 @@ class PokerHandType
     PokerHandTypeRank.new(@type)
   end
 
+  def to_sym
+    @type
+  end
+
   def ==(other_type)
-    @type == other_type or @type == other_type.type
+    self.to_sym == other_type.to_sym
+  end
+
+  def <=>(other_type)
+    self.rank <=> other_type.rank
   end
 end

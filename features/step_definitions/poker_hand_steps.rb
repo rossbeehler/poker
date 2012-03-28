@@ -12,7 +12,7 @@ Given /^(\w+) has the cards (.*)$/ do |player, cards|
 end
 
 Then /^(\w+) has a ([^(]*)[(](.+)[)]$/ do |player, hand_type, hand_type_rank|
-  @poker_round[player.to_sym].type.should == hand_type.strip.downcase.sub(/ /,"_").to_sym
+  @poker_round[player.to_sym].type.to_sym.should == hand_type.strip.downcase.sub(/ /,"_").to_sym
   @poker_round[player.to_sym].type_rank.should == hand_type_rank
 end
 
