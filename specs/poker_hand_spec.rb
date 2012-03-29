@@ -1,12 +1,11 @@
-require_relative '../poker_hand'
-require_relative '../poker_card'
+require_relative '../poker_hands/poker_hand_factory'
 
 def sort(cards)
   hand_of(cards).sort.map { |c| c.to_s }
 end
 
 def hand_of(cards)
-  PokerHand.new(:player1, cards)
+  PokerHandFactory.create_hand(cards)
 end
 
 def hand_type_of(cards)

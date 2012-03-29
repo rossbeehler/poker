@@ -1,21 +1,20 @@
 require_relative '../poker_round'
-require_relative '../poker_hand'
 
 def add_hand(player, cards)
-  subject.add_hand(PokerHand.new(player, cards))
+  subject.add_cards(player, cards)
 end
 
 describe PokerRound do
   context "registering hands" do
     it "accepts hands for one player" do
       add_hand(:player1, %W(AS))
-      subject[:player1].player.should == :player1
+      subject[:player1].should_not be_nil
     end
 
     it "accepts hands for two players" do
       add_hand(:player1, %W(AS))
       add_hand(:player2, %W(AC))
-      subject[:player2].player.should == :player2
+      subject[:player2].should_not be_nil
     end
   end
 

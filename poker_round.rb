@@ -1,22 +1,19 @@
-class PokerRound
-  def initialize
-    @hands = []
+require_relative 'poker_hands/poker_hand_factory'
+
+class PokerRound < Hash
+  def add_cards(player, cards)
+    self[player] = PokerHandFactory.create_hand(cards)
   end
 
-  def add_hand(hand)
-    @hands << hand
-  end
-
-  def [] (player)
-    @hands.select { |h| h.player == player }.first
+  def hands
+    values
   end
 
   def winner
-    high_hand.player
+    invert[high_hand]
   end
 
   def high_hand
-    @hands.sort[-1]
+    hands.sort[-1]
   end
-
 end

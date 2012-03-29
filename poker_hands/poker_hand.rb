@@ -1,20 +1,12 @@
-require_relative 'poker_hand_type'
-
 class PokerHand
-  attr_reader :player
   attr_reader :cards
 
-  def initialize(player, cards)
-    @player = player
-    @cards = cards.map { |s| PokerCard.new(s) }
+  def initialize(cards)
+    @cards = cards
   end
 
   def sort
     @cards.sort
-  end
-
-  def type
-    PokerHandType.new(self)
   end
 
   def type_rank
