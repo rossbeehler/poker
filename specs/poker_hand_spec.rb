@@ -1,4 +1,4 @@
-require_relative '../poker_hands/poker_hand_factory'
+require_relative '../poker_hand_factory'
 
 def sort(cards)
   hand_of(cards).sort.map { |c| c.to_s }
@@ -6,10 +6,6 @@ end
 
 def hand_of(cards)
   PokerHandFactory.create_hand(cards)
-end
-
-def hand_type_of(cards)
-  hand_of(cards).type.to_sym
 end
 
 describe PokerHand do
@@ -40,34 +36,6 @@ describe PokerHand do
 
     it "sorts an ace higher than a king" do
       sort(%W(AS KS)).should == %W(KS AS)
-    end
-  end
-
-  context "detect type" do
-    it "finds a high card" do
-      hand_type_of(%W(2S 3S)).should == :high_card
-    end
-
-    it "finds a pair among two cards" do
-      hand_type_of(%W(2S 2C)).should == :one_pair
-    end
-
-    it "finds a pair at the back of three cards" do
-      hand_type_of(%W(3S 2S 2C)).should == :one_pair
-    end
-
-    it "finds a pair spread out in the hand" do
-      hand_type_of(%W(2S 3S 2C)).should == :one_pair
-    end
-  end
-
-  context "detect type rank" do
-    it "finds high card rank for one card" do
-      hand_of(%W(2S)).type_rank.should == "2"
-    end
-
-    it "finds a high card rank for two cards" do
-      hand_of(%W(2S 3S)).type_rank.should == "3"
     end
   end
 end

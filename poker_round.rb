@@ -1,4 +1,4 @@
-require_relative 'poker_hands/poker_hand_factory'
+require_relative 'poker_hand_factory'
 
 class PokerRound
   def initialize
