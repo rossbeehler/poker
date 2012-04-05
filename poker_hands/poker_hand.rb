@@ -19,7 +19,7 @@ class PokerHand
 
   def <=>(other_hand)
     if self.type == other_hand.type
-      return high_card <=> other_hand.high_card
+      return self.tie_break(other_hand)
     end
 
     self.type <=> other_hand.type

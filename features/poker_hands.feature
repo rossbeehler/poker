@@ -15,4 +15,5 @@ Feature: Poker Hands
     | player_1_cards | player_2_cards | player_1_hand_type | player_2_hand_type | winner  |
     | 2S,3S,4S,5S,AC | 2H,3H,4H,5H,KD | High Card (A)      | High Card (K)      | player1 |
     | 2S,3S,4S,5S,AC | 2H,3H,4H,5H,5D | High Card (A)      | One Pair (5)       | player2 |
-    | 2S,3S,AS,5S,5C | 2H,3H,AH,6H,6D | One Pair (5)       | One Pair(6)        | player2 |
+    | 2S,3S,AS,5S,5C | 2H,3H,AH,6H,6D | One Pair (5)       | One Pair (6)       | player2 |
+    | 2S,3S,KS,5S,5C | 2H,3H,AH,5H,5D | One Pair (5)       | One Pair (5)       | player2 |
