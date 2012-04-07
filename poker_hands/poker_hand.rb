@@ -1,7 +1,9 @@
 class PokerHand
+  attr_reader :player
   attr_reader :cards
 
-  def initialize(cards)
+  def initialize(player, cards)
+    @player = player
     @cards = cards
   end
 

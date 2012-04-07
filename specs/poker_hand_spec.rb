@@ -5,7 +5,7 @@ def sort(cards)
 end
 
 def hand_of(cards)
-  PokerHandFactory.create_hand(cards)
+  PokerHandFactory.create_hand(:player1, cards)
 end
 
 describe PokerHand do

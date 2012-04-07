@@ -2,17 +2,17 @@ require_relative '../../poker_hands/one_pair_poker_hand'
 require_relative '../../poker_hand_factory'
 
 def hand_of(cards)
-  PokerHandFactory.create_hand(cards)
+  PokerHandFactory.create_hand(:player1, cards)
 end
 
 class OnePairPokerHand
   def should_be_greater_than(lesser_cards)
-    lesser_hand = PokerHandFactory.create_hand(lesser_cards)
+    lesser_hand = PokerHandFactory.create_hand(:player2, lesser_cards)
     compare_to(lesser_hand).should == :greater
   end
 
   def should_equal(equal_cards)
-    equal_hand = PokerHandFactory.create_hand(equal_cards)
+    equal_hand = PokerHandFactory.create_hand(:player2, equal_cards)
     compare_to(equal_hand).should == :equal
     self.should == equal_hand
   end

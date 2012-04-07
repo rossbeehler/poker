@@ -1,7 +1,7 @@
 require_relative '../poker_hand_factory'
 
 def hand_type_of(cards)
-  PokerHandFactory.create_hand(cards).type
+  PokerHandFactory.create_hand(:player1, cards).type
 end
 
 describe PokerHandFactory do
