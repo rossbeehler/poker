@@ -14,5 +14,5 @@ Then /^(\w+) has a ([^(]*)[(](.+)[)]$/ do |player, hand_type, hand_type_rank|
 end
 
 Then /^the winner is (.*)$/ do |winner|
-  @poker_round.winner.should == winner.to_sym
+  @poker_round.winners.should == winner.split(',').map { |x| x.to_sym }
 end

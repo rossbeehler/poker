@@ -13,11 +13,14 @@ class PokerRound
     @hands[player]
   end
 
-  def winner
-    @hands.invert[high_hand]
-  end
+  def winners
+    sorted_hands = @hands.sort_by {|player, hand| hand}
 
-  def high_hand
-    @hands.values.sort[-1]
+    winning_hands = [sorted_hands.pop]
+    while sorted_hands.size > 0 and sorted_hands[-1][1] == winning_hands[0][1]
+      winning_hands << sorted_hands.pop
+    end
+
+    winning_hands.map {|x| x[0] }.sort
   end
 end

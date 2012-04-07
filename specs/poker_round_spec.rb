@@ -18,35 +18,35 @@ describe PokerRound do
     end
   end
 
-  context "picking a high card hand winner" do
+  context "picking a high card hand winners" do
     it "handles numeric high cards" do
       add_hand(:player1, %W(2S))
       add_hand(:player2, %W(3S))
-      subject.winner.should == :player2
+      subject.winners.should == [:player2]
     end
 
     it "picks high jack over ten" do
       add_hand(:player1, %W(10S))
       add_hand(:player2, %W(JS))
-      subject.winner.should == :player2
+      subject.winners.should == [:player2]
     end
 
     it "picks high queen over jack" do
       add_hand(:player1, %W(JS))
       add_hand(:player2, %W(QS))
-      subject.winner.should == :player2
+      subject.winners.should == [:player2]
     end
 
     it "picks high king over queen" do
       add_hand(:player1, %W(QS))
       add_hand(:player2, %W(KS))
-      subject.winner.should == :player2
+      subject.winners.should == [:player2]
     end
 
     it "picks high ace over king" do
       add_hand(:player1, %W(AS))
       add_hand(:player2, %W(KS))
-      subject.winner.should == :player1
+      subject.winners.should == [:player1]
     end
   end
 
@@ -54,7 +54,28 @@ describe PokerRound do
     it "picks one pair over high card" do
       add_hand(:player1, %W(AS))
       add_hand(:player2, %W(2S 2C))
-      subject.winner.should == :player2
+      subject.winners.should == [:player2]
+    end
+  end
+
+  context "recognizes draws" do
+    it "declares single winners" do
+      add_hand(:player1, %W(AS))
+      add_hand(:player2, %W(KS))
+      subject.winners.should == [:player1]
+    end
+
+    it "declares multiple winners" do
+      add_hand(:player1, %W(AS))
+      add_hand(:player2, %W(AD))
+      subject.winners.should == [:player1, :player2]
+    end
+
+    it "does not declare everyone a winner" do
+      add_hand(:player1, %W(AS))
+      add_hand(:player2, %W(KS))
+      add_hand(:player3, %W(AS))
+      subject.winners.should == [:player1, :player3]
     end
   end
 end

@@ -17,6 +17,10 @@ class PokerHand
     sort[-1]
   end
 
+  def ==(other_hand)
+    (self <=> other_hand) == 0
+  end
+
   def <=>(other_hand)
     if self.type == other_hand.type
       return self.tie_break(other_hand)

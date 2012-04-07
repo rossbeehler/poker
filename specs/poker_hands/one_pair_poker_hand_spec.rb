@@ -11,8 +11,14 @@ class OnePairPokerHand
     compare_to(lesser_hand).should == :greater
   end
 
-  def compare_to(lesser_hand)
-    comparison_i = (self <=> lesser_hand)
+  def should_equal(equal_cards)
+    equal_hand = PokerHandFactory.create_hand(equal_cards)
+    compare_to(equal_hand).should == :equal
+    self.should == equal_hand
+  end
+
+  def compare_to(other)
+    comparison_i = (self <=> other)
     return :less if comparison_i == -1
     return :greater if comparison_i == 1
     :equal
@@ -52,7 +58,9 @@ describe OnePairPokerHand do
         hand_of(%W(4S 4C QS KS AS)).should_be_greater_than(%W(4H 4D JH KH AS))
       end
 
-      it "declares draw if all cards match"
+      it "declares draw if all cards match" do
+        hand_of(%W(2S 2C 3S 4S 5S)).should_equal(%W(2H 2D 3H 4H 5H))
+      end
     end
   end
 end
