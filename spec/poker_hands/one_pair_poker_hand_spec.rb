@@ -1,43 +1,10 @@
+require_relative 'poker_hand_spec_helper.rb'
 require_relative '../../poker_hands/one_pair_poker_hand'
 require_relative '../../poker_hand_factory'
 
-def hand_of(cards)
-  PokerHandFactory.create_hand(:player1, cards)
-end
-
-class OnePairPokerHand
-  def should_be_greater_than(lesser_cards)
-    lesser_hand = PokerHandFactory.create_hand(:player2, lesser_cards)
-    compare_to(lesser_hand).should == :greater
-  end
-
-  def should_equal(equal_cards)
-    equal_hand = PokerHandFactory.create_hand(:player2, equal_cards)
-    compare_to(equal_hand).should == :equal
-    self.should == equal_hand
-  end
-
-  def compare_to(other)
-    comparison_i = (self <=> other)
-    return :less if comparison_i == -1
-    return :greater if comparison_i == 1
-    :equal
-  end
-end
-
 describe OnePairPokerHand do
   it "should have a type of one_pair" do
-    hand_of(%W(2S 2C)).type.should == :one_pair
-  end
-
-  context "rank of pair" do
-    it "ranks pair of highest cards in hand" do
-      hand_of(%W(2S 3S 3C)).type_rank.should == "3"
-    end
-
-    it "ranks pair of lowest cards in hand" do
-      hand_of(%W(2S 2C 3S)).type_rank.should == "2"
-    end
+    hand_of(%W(2S 2C 3S 4S 5S)).type.should == :one_pair
   end
 
   context "tie-breaking hands" do

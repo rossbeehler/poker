@@ -7,18 +7,6 @@ class PokerHand
     @cards = cards
   end
 
-  def sort
-    @cards.sort
-  end
-
-  def type_rank
-    high_card.rank
-  end
-
-  def high_card
-    sort[-1]
-  end
-
   def ==(other_hand)
     (self <=> other_hand) == 0
   end

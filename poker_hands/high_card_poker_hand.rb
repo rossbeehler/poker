@@ -6,6 +6,6 @@ class HighCardPokerHand < PokerHand
   end
 
   def tie_break(other_hand)
-    self.high_card <=> other_hand.high_card
+    @cards.sort[-1] <=> other_hand.cards.sort[-1]
   end
 end

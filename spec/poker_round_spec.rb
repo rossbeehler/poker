@@ -18,43 +18,17 @@ describe PokerRound do
     end
   end
 
-  context "picking a high card hand winners" do
-    it "handles numeric high cards" do
-      add_hand(:player1, %W(2S))
-      add_hand(:player2, %W(3S))
-      subject.winners.should == [:player2]
-    end
-
-    it "picks high jack over ten" do
-      add_hand(:player1, %W(10S))
-      add_hand(:player2, %W(JS))
-      subject.winners.should == [:player2]
-    end
-
-    it "picks high queen over jack" do
-      add_hand(:player1, %W(JS))
-      add_hand(:player2, %W(QS))
-      subject.winners.should == [:player2]
-    end
-
-    it "picks high king over queen" do
-      add_hand(:player1, %W(QS))
-      add_hand(:player2, %W(KS))
-      subject.winners.should == [:player2]
-    end
-
-    it "picks high ace over king" do
-      add_hand(:player1, %W(AS))
-      add_hand(:player2, %W(KS))
-      subject.winners.should == [:player1]
-    end
-  end
-
   context "knows the rank of hand types" do
     it "picks one pair over high card" do
       add_hand(:player1, %W(AS))
-      add_hand(:player2, %W(2S 2C))
+      add_hand(:player2, %W(2S 2C 3S 4S 5S))
       subject.winners.should == [:player2]
+    end
+
+    it "picks two pair over one pair" do
+      add_hand(:player1, %W(2S 2C 3S 3C 4S))
+      add_hand(:player2, %W(2S 2C 3S 4S 5S))
+      subject.winners.should == [:player1]
     end
   end
 

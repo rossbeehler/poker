@@ -10,7 +10,13 @@ class PokerCards
   end
 
   def has_pair?
-    @cards.any? { |c1| @cards.count{ |c2| c1.rank == c2.rank } > 1 }
+    card_ranks = @cards.map { |c| c.rank } 
+    card_ranks.uniq.count == 4
+  end
+
+  def has_two_pairs?
+    card_ranks = @cards.map { |c| c.rank } 
+    card_ranks.uniq.count == 3
   end
 
   def pair_value
