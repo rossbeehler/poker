@@ -8,7 +8,7 @@ class PokerHandFactory
     @cards = PokerCards.new(cards)
 
     return TwoPairPokerHand.new(player, @cards) if @cards.has_two_pairs?
-    return OnePairPokerHand.new(player, @cards) if @cards.has_pair?
+    return OnePairPokerHand.new(player, @cards) if @cards.has_one_pair?
 
     HighCardPokerHand.new(player, @cards)
   end

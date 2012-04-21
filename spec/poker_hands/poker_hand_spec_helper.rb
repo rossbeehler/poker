@@ -7,6 +7,10 @@ class PokerHand
     (self <=> hand_of(other_cards)).should == 1
   end
 
+  def should_be_less_than(other_cards)
+    (self <=> hand_of(other_cards)).should == -1
+  end
+
   def should_equal(other_cards)
     (self <=> hand_of(other_cards)).should == 0
     (self == hand_of(other_cards)).should == true

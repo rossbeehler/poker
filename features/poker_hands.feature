@@ -19,3 +19,4 @@ Feature: Poker Hands
     | 2S,3S,KS,5S,5C | 2H,3H,AH,5H,5D | One Pair           | One Pair           | player2         |
     | 2S,2C,3S,4S,5S | 2H,2D,3H,4H,5H | One Pair           | One Pair           | player1,player2 |
     | 2S,2C,3S,4S,5S | 2H,2D,3H,3D,4H | One Pair           | Two Pair           | player2         |
+    | 2S,2C,3S,3C,AS | 2H,2D,4H,4D,KS | Two Pair           | Two Pair           | player2         |

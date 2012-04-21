@@ -8,7 +8,7 @@ class OnePairPokerHand < PokerHand
   end
 
   def type_rank
-    @cards.pair_value
+    @cards.pair_values[0]
   end
 
   def tie_break(other_hand)
@@ -17,7 +17,7 @@ class OnePairPokerHand < PokerHand
 
   def sort_and_remove_pair
     sorted = @cards.sort
-    sorted.delete(@cards.pair_value)
+    sorted.delete(@cards.pair_values[0])
     sorted
   end
 end
